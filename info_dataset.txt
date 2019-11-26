@@ -1,0 +1,20 @@
+connexe_petites_taches : 30 petites taches (plutôt rondes de couleur)
+connexe, relativement séparé
+k = 30
+
+bruite: 2 petits ronds de couleurs et plein de petits points verts partout
+connexe, bien séparé, bruité
+k = 2
+
+non_connexe : 2 "bananes" imbriquées
+non connexe, bien séparé
+
+densite_variable
+connexe, mal séparé
+k=4
+
+mal_separe: formes allongées (ovales)
+connexe, mal séparé, densité plutôt variable
+k=10
+
+
