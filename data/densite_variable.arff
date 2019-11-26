@@ -3,8 +3,8 @@
 % Handl, Julia, and Joshua Knowles. "Multiobjective clustering with automatic determination of the number of clusters."
 % UMIST, Manchester, Tech. Rep. TR-COMPSYSBIO-2004-02 (2004).
 
-@ATTRIBUTE a0 REAL
-@ATTRIBUTE a1 REAL
+@ATTRIBUTE x REAL
+@ATTRIBUTE y REAL
 @ATTRIBUTE class {0,1,2,3}
 
 @DATA
