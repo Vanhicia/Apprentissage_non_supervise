@@ -19,3 +19,8 @@ data_densite_variable = dataset_densite_variable[0]['class']
 
 dataset_densite_non_variable = dataset_non_connexe
 data_densite_non_variable = dataset_densite_non_variable[0]['class']
+
+print("K_Means")
+kmeans = cluster.KMeans(n_clusters=30, init='k-means++')
+kmeans.fit(data_connexe)
+kmeans.predict(data_connexe)
