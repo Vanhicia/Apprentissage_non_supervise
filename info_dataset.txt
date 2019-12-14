@@ -8,13 +8,14 @@ k = 2
 
 non_connexe : 2 "bananes" imbriquées
 non connexe, bien séparé
+k = 2
 
 densite_variable
 connexe, mal séparé
-k=4
+k = 4
 
 mal_separe: formes allongées (ovales)
 connexe, mal séparé, densité plutôt variable
-k=10
+k = 10
 
 
