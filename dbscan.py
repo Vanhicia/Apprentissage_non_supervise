@@ -1,39 +1,43 @@
+from matplotlib import pyplot as plt
 from scipy.io import arff
 from sklearn import cluster
 from sklearn import metrics
+from os import walk
 import numpy as np
-from matplotlib import pyplot as plt
 import time
 
-list_dataset = ["convexe_petites_taches", "bruite_convexe","non_convexe", "densite_variable", "mal_separe"]
-path = "./data/"
+path = "./data/arff/"
 
-print("DBSCAN")
+list_dataset = []
+for (dirpath, dirnames, filenames) in walk(path):
+    list_dataset.extend(filenames)
+    break
+    
 
-esp = [0.3,0.08,0.3,0.4,0.3]
-min_samples = [2,30,3,2,3]
+print("#==================== Méthode : DBSCAN ======================#")
+esp = [0.06,0.31,0.81,0.71,0.96,0.06]
+min_samples = [5,34,2,19,11,2]
+
+print("#================ Valeurs de esp et min_samples donnés ===================#")
+
 for i in range(len(list_dataset)):
-    print(list_dataset[i])
+    print("\n#----------------- " + list_dataset[i] + " --------------------#")
+    
     time_start = time.process_time() # On regarde le temps CPU
-    dataset = arff.loadarff(open(path + list_dataset[i] + '.arff', 'r'))
+    
+    dataset = arff.loadarff(open(path + list_dataset[i], 'r'))
     data = [[x[0],x[1]] for x in dataset[0]]
 
     dbscan = cluster.DBSCAN(eps=esp[i], min_samples=min_samples[i])
-    y_pred= dbscan.fit_predict(data)
+    y_pred = dbscan.fit_predict(data)
     
     labels = dbscan.labels_
-    np.unique(labels)
-    print("Labels")
-    if len(np.unique(labels)) >1 :
-        print("Indice de Davies-Bouldin")
-        print(metrics.davies_bouldin_score(data, labels))
-
-        print("Coefficient de silhouette")
-        print(metrics.silhouette_score(data, labels, metric='euclidean'))
-
+    
     plt.scatter((dataset[0])['x'], (dataset[0])['y'], c=y_pred, cmap="tab20")
     plt.show()
+    if len(np.unique(labels)) > 1 :
+        print("Indice de Davies-Bouldin : " + str(metrics.davies_bouldin_score(data, labels)))
+        print("Coefficient de silhouette : " + str(metrics.silhouette_score(data, labels, metric='euclidean')))
+
     time_stop = time.process_time() # On regarde le temps CPU
     print("Temps de calcul : " + str(time_stop-time_start))
-
-    
