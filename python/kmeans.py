@@ -7,7 +7,7 @@ import numpy as np
 import time
 
 
-path = "./data/arff/"
+path = "../data/arff/"
 
 list_dataset = []
 for (dirpath, dirnames, filenames) in walk(path):
